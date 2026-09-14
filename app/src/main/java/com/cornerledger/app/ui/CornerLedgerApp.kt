@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -63,7 +64,12 @@ fun CornerLedgerApp(viewModel: LedgerViewModel = viewModel()) {
     }
 
     CornerLedgerTheme {
-        Box(Modifier.fillMaxSize().background(Background)) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .background(Background)
+                .safeDrawingPadding(),
+        ) {
             Column(Modifier.fillMaxSize()) {
                 when (state.screen) {
                     Screen.HOME -> HomeHeader(onMenu = viewModel::openMenu)
